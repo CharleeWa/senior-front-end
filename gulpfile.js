@@ -6,6 +6,7 @@ let browserSync = require('browser-sync').create();
 // Paths
 let Paths = {
   ENTER: './',
+  HTML: 'html/**/*.html',
   JS: 'javascript/**/*.js',
   CSS: 'css/**/*.css',
 }
@@ -19,7 +20,8 @@ gulp.task('serve', function (done) {
 });
 
 // watching files
-gulp.task('watch', function(done) {
+gulp.task('watch', function (done) {
+  gulp.watch(Paths.HTML).on('change', browserSync.reload);
   gulp.watch(Paths.JS).on('change', browserSync.reload);
   gulp.watch(Paths.CSS).on('change', browserSync.reload);
   done();
